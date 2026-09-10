@@ -7,10 +7,10 @@
     <style>
         :root {
             --bg-dark: #0a0c10;
-            --card-bg: rgba(22, 27, 34, 0.85);
-            --card-border: rgba(255, 255, 255, 0.12);
+            --card-bg: rgba(18, 22, 29, 0.82);
+            --card-border: rgba(255, 255, 255, 0.15);
             --accent-orange: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.25);
+            --accent-glow: rgba(249, 115, 22, 0.3);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
         }
@@ -20,25 +20,30 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-dark);
+            /* Technical bench background with dark industrial overlay */
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(10, 12, 16, 0.88), rgba(10, 12, 16, 0.92)),
+                url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
             padding: 40px 20px;
+            min-height: 100vh;
         }
 
         .container { max-width: 900px; margin: 0 auto; }
 
+        /* Header / Hero Section */
         header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 50px 25px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
@@ -70,14 +75,15 @@
         }
 
         .subtext { 
-            color: var(--text-muted); 
+            color: #d1d5db; 
             margin-top: 15px; 
-            font-size: 1rem; 
-            max-width: 700px;
+            font-size: 1.05rem; 
+            max-width: 720px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        /* Feature Cards Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -90,37 +96,43 @@
             border: 1px solid var(--card-border);
             border-radius: 10px;
             padding: 25px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-orange);
-            box-shadow: 0 8px 20px var(--accent-glow);
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
         .card h3 { 
             color: var(--accent-orange); 
             margin-bottom: 12px; 
             font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .card p { color: var(--text-muted); font-size: 0.95rem; }
 
+        /* Contact Form Section */
         .contact-section {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 35px;
             margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .contact-section h2 { 
             margin-bottom: 10px; 
             font-size: 1.75rem; 
             color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .contact-section p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; }
@@ -138,7 +150,7 @@
         input, textarea {
             width: 100%;
             padding: 14px;
-            background-color: rgba(10, 12, 16, 0.8);
+            background-color: rgba(10, 12, 16, 0.85);
             border: 1px solid var(--card-border);
             border-radius: 6px;
             color: var(--text-main);
@@ -149,7 +161,7 @@
         input:focus, textarea:focus { 
             outline: none;
             border-color: var(--accent-orange); 
-            box-shadow: 0 0 8px var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         button {
@@ -188,28 +200,28 @@
     <div class="container">
         <header>
             <h1>Blacksheep Benchworks</h1>
-            <p class="tagline">Pure Consignment Bench Labor & Small-Batch Assembly</p>
-            <p class="subtext">Fast-turn wire prep, pigtail termination, resin encapsulation, and low-MOQ sub-assemblies for OEMs, 4x4 builders, and integrators.</p>
+            <p class="tagline">Consignment Assembly, Wiring & Resin Potting</p>
+            <p class="subtext">Veteran-owned and driven by a genuine passion for precision craftsmanship. Dedicated bench labor focused on circuit boards, sensors, custom harnesses, and small-batch equipment assemblies for OEMs, builders, and integrators.</p>
         </header>
 
         <section class="grid">
             <div class="card">
-                <h3>Consignment Model</h3>
-                <p>You provide the component kits and drop-shipped parts. We supply the dedicated bench labor, soldering, crimping, and testing. Zero inventory markup.</p>
+                <h3>Consignment Bench Labor</h3>
+                <p>You supply the PCB assemblies, components, and drop-shipped parts. We handle precision soldering, crimping, wire prep, and functional testing with zero inventory markup.</p>
             </div>
             <div class="card">
                 <h3>Resin Potting & Sealing</h3>
-                <p>Specialized resin potting and encapsulation built to protect switch panels, sensor blocks, and electronics against water, mud, and high vibration.</p>
+                <p>Specialized resin potting and encapsulation engineered to protect switches, PCB sensors, and sensitive electronics against severe vibration, water, and harsh environmental exposure.</p>
             </div>
             <div class="card">
-                <h3>Fast Turnarounds</h3>
-                <p>No waiting weeks for offshore factory minimums. Rapid benchtop execution for 5-to-50 unit prototype batches and overflow production runs.</p>
+                <h3>Small-Batch Flexibility</h3>
+                <p>Built for rapid execution on 5-to-50 unit prototype batches, prototype runs, and low-volume production overflow without rigid offshore factory minimums.</p>
             </div>
         </section>
 
         <section class="contact-section">
             <h2>Request a Consignment Quote</h2>
-            <p>Send details about your batch run, BOM specs, or wire harness requirements. Direct responses within 24 hours.</p>
+            <p>Submit your project details, component specs, or wiring requirements. Direct responses within 24 hours.</p>
 
             <form action="https://formspree.io/f/mqpkwywj" method="POST">
                 <div>
@@ -222,7 +234,7 @@
                 </div>
                 <div>
                     <label for="details">Project Specs / Quantity / Details</label>
-                    <textarea id="details" name="message" rows="5" required placeholder="Describe your pigtail, potting, or consignment assembly requirements..."></textarea>
+                    <textarea id="details" name="message" rows="5" required placeholder="Describe your PCB assembly, wire harness, sensor encapsulation, or consignment requirements..."></textarea>
                 </div>
                 <button type="submit">Submit Inquiry</button>
             </form>
