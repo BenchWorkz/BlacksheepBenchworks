@@ -1,384 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blacksheep Benchworks | Consignment Assembly, Wiring & Potting</title>
-    <style>
-        :root {
-            --bg-dark: #0a0c10;
-            --card-bg: rgba(18, 22, 29, 0.85);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --accent-orange: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.3);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blacksheep Benchworks | Consignment Wire Prep, PCB Assembly &amp; Resin Potting</title>
+<meta name="description" content="Veteran-owned consignment benchwork in Birmingham, AL. Wire harness prep, PCB assembly, and resin potting/encapsulation for automotive, marine, and industrial OEM builders. 24-hour quote turnaround.">
+<meta property="og:title" content="Blacksheep Benchworks | Consignment Assembly, Wiring & Potting">
+<meta property="og:description" content="Veteran-owned bench labor for wire prep, PCB assembly, and resin potting. Low-MOQ consignment production, Birmingham, AL.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0C10'/%3E%3Cpath d='M8 22 L8 10 L16 10 L16 14 L12 14 L12 22 M20 10 L20 22 L24 22 L24 18 L20 18' stroke='%23E8590C' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0A0C10;
+    --panel: #12151A;
+    --panel-raised: #171B21;
+    --line: #262B32;
+    --line-bright: #3A414B;
+    --accent: #E8590C;
+    --accent-dim: rgba(232, 89, 12, 0.14);
+    --text: #ECEEF0;
+    --text-muted: #8B9299;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            background-image: 
-                linear-gradient(rgba(10, 12, 16, 0.90), rgba(10, 12, 16, 0.94)),
-                url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
+  html { scroll-behavior: smooth; }
 
-        .container { max-width: 950px; margin: 0 auto; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:
+      linear-gradient(var(--bg), var(--bg)),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
 
-        /* Badge Styling */
-        .vet-badge {
-            display: inline-block;
-            background: rgba(249, 115, 22, 0.15);
-            border: 1px solid var(--accent-orange);
-            color: var(--accent-orange);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-        }
+  a { color: inherit; }
 
-        /* Header / Hero Section */
-        header {
-            text-align: center;
-            padding: 50px 25px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-        }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
-        }
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
 
-        h1 { 
-            font-size: 2.6rem; 
-            color: #ffffff; 
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
+  p { color: var(--text-muted); }
 
-        .tagline { 
-            color: var(--accent-orange); 
-            font-weight: 700; 
-            font-size: 1.2rem; 
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 
-        .subtext { 
-            color: #d1d5db; 
-            margin-top: 15px; 
-            font-size: 1.05rem; 
-            max-width: 760px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
 
-        /* Guarantee / Offer Banner */
-        .guarantee-banner {
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(10, 12, 16, 0.8));
-            border: 1px dashed var(--accent-orange);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+  /* ---------- Top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    background: rgba(10,12,16,0.9);
+  }
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .topbar-inner a { text-decoration: none; }
+  .topbar-inner a:hover { color: var(--accent); }
+  .topbar-contact { display: flex; gap: 22px; flex-wrap: wrap; }
 
-        .guarantee-banner h3 {
-            color: #ffffff;
-            font-size: 1.15rem;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 72px 0 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line-bright);
+    color: var(--text-muted);
+    padding: 6px 12px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    margin-bottom: 22px;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  h1.brand {
+    font-size: 2.7rem;
+    line-height: 1.08;
+  }
+  .tagline {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-top: 14px;
+    max-width: 46ch;
+  }
+  .subtext {
+    margin-top: 16px;
+    font-size: 1rem;
+    max-width: 54ch;
+  }
+  .hero-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 13px 22px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0A0C10;
+  }
+  .btn-primary:hover { background: #ff6c1f; }
+  .btn-outline {
+    border-color: var(--line-bright);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-        .guarantee-banner p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-        }
+  .hero-diagram {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 18px;
+  }
+  .hero-diagram svg { width: 100%; height: auto; display: block; }
+  .hero-diagram-caption {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
 
-        /* Section Titles */
-        .section-title {
-            font-size: 1.5rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 40px 0 20px 0;
-            text-align: center;
-            position: relative;
-        }
+  /* ---------- Section shell ---------- */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
 
-        /* Grid Layouts */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
+  h2.section-title {
+    font-size: 1.65rem;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin-bottom: 30px;
+  }
+  .section-index {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        }
+  /* ---------- Guarantee panel ---------- */
+  .guarantee {
+    border-left: 3px solid var(--accent);
+    background: var(--panel);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .guarantee h3 { font-size: 1.05rem; }
+  .guarantee p { margin-top: 4px; font-size: 0.92rem; }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-orange);
-            box-shadow: 0 8px 25px var(--accent-glow);
-        }
+  /* ---------- Panels / cards (technical, not glassmorphism) ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .grid .panel { background: var(--bg); padding: 26px; }
+  .panel h3 { font-size: 1.05rem; margin-bottom: 12px; color: var(--accent); }
+  .panel p, .panel ul { font-size: 0.93rem; }
+  .panel ul { list-style: none; }
+  .panel ul li { position: relative; padding-left: 16px; margin-bottom: 7px; color: var(--text-muted); }
+  .panel ul li::before { content: '—'; position: absolute; left: 0; color: var(--line-bright); }
+  .panel-icon { width: 34px; height: 34px; margin-bottom: 16px; color: var(--accent); }
 
-        .card h3 { 
-            color: var(--accent-orange); 
-            margin-bottom: 12px; 
-            font-size: 1.15rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+  /* ---------- Estimator ---------- */
+  .calc {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .calc-fields { display: flex; flex-direction: column; gap: 18px; }
+  .field label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 11px 12px;
+    background: var(--bg);
+    border: 1px solid var(--line-bright);
+    color: var(--text);
+    font-size: 0.95rem;
+    border-radius: 2px;
+  }
+  .calc-readout {
+    border-left: 1px solid var(--line-bright);
+    padding-left: 32px;
+  }
+  .calc-readout .label { font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted); }
+  .calc-readout .value { font-size: 1.9rem; color: var(--accent); font-weight: 600; margin-top: 6px; font-family: 'Space Grotesk', sans-serif; }
+  .calc-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 14px; }
 
-        .card p, .card ul { color: var(--text-muted); font-size: 0.95rem; }
-        .card ul { list-style: none; padding: 0; }
-        .card ul li { margin-bottom: 8px; position: relative; padding-left: 18px; }
-        .card ul li::before { content: "▪"; color: var(--accent-orange); position: absolute; left: 0; }
+  @media (max-width: 720px) {
+    .calc { grid-template-columns: 1fr; }
+    .calc-readout { border-left: none; border-top: 1px solid var(--line-bright); padding-left: 0; padding-top: 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+  }
 
-        /* Process Steps */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
+  /* ---------- Process steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .step { background: var(--bg); padding: 26px; }
+  .step .num { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; }
+  .step h4 { margin: 10px 0 8px 0; font-size: 1rem; }
+  .step p { font-size: 0.9rem; }
+  .ship-to {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text);
+    border-top: 1px dashed var(--line-bright);
+    padding-top: 10px;
+  }
 
-        .step-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
+  /* ---------- Case study ---------- */
+  .case { border-left: 3px solid var(--accent); background: var(--panel); padding: 26px 28px; }
+  .case h3 { margin-bottom: 12px; }
+  .case p { font-size: 0.95rem; margin-bottom: 8px; }
+  .case p strong { color: var(--text); }
 
-        .step-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-orange);
-            margin-bottom: 5px;
-        }
+  /* ---------- FAQ ---------- */
+  .faq-item { border: 1px solid var(--line); margin-bottom: 1px; }
+  .faq-question {
+    padding: 18px 20px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.98rem;
+    background: var(--panel);
+  }
+  .faq-question .sign { font-family: var(--mono); color: var(--accent); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    font-size: 0.92rem;
+    background: var(--bg);
+  }
+  .faq-answer p { padding: 0 20px; }
+  .faq-item.active .faq-answer { max-height: 240px; }
+  .faq-item.active .faq-answer p { padding: 16px 20px 20px 20px; }
 
-        /* Contact Form Section */
-        .contact-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 35px;
-            margin-top: 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+  /* ---------- Contact ---------- */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-info dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; font-size: 0.92rem; margin-top: 20px; }
+  .contact-info dt { font-family: var(--mono); color: var(--text-muted); font-size: 0.8rem; padding-top: 2px; }
+  .contact-info dd { color: var(--text); }
 
-        .contact-section h2 { 
-            margin-bottom: 10px; 
-            font-size: 1.75rem; 
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+  form { display: flex; flex-direction: column; gap: 16px; }
+  .field-full label { display: block; font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+  input, textarea {
+    width: 100%;
+    padding: 13px;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    color: var(--text);
+    font-size: 0.95rem;
+    border-radius: 2px;
+    font-family: inherit;
+  }
+  input:focus, textarea:focus { border-color: var(--accent); }
+  button[type="submit"] {
+    background: var(--accent);
+    color: #0A0C10;
+    border: none;
+    padding: 15px 22px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  button[type="submit"]:hover { background: #ff6c1f; }
 
-        .contact-section p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; }
+  footer {
+    padding: 30px 0 50px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-family: var(--mono);
+  }
 
-        form { display: flex; flex-direction: column; gap: 18px; }
-
-        label { 
-            font-size: 0.85rem; 
-            color: var(--text-main); 
-            font-weight: 600; 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 14px;
-            background-color: rgba(10, 12, 16, 0.85);
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            color: var(--text-main);
-            font-size: 1rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        input:focus, textarea:focus { 
-            outline: none;
-            border-color: var(--accent-orange); 
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        button {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            color: #ffffff;
-            border: none;
-            padding: 16px 25px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 15px var(--accent-glow);
-        }
-
-        button:hover { 
-            opacity: 0.95; 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px var(--accent-glow);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid var(--card-border);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-    </style>
+  @media (max-width: 720px) {
+    .contact-wrap { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="vet-badge">★ 100% Veteran-Owned & Operated ★</div>
-            <h1>Blacksheep Benchworks</h1>
-            <p class="tagline">Precision Consignment Assembly, Wiring & Resin Potting</p>
-            <p class="subtext">Driven by military-grade discipline and a genuine passion for precision benchwork. We specialize in fast-turn wire preparation, sensor encapsulation, circuit board assemblies, and low-MOQ sub-assemblies for equipment builders and OEMs.</p>
-        </header>
-
-        <!-- Guarantee & Intro Offer -->
-        <div class="guarantee-banner">
-            <h3>⚡ Guaranteed 24-Hour Quote Turnaround</h3>
-            <p>New Client Offer: Receive <strong>10% off bench labor</strong> on your first prototype or small-batch production run.</p>
-        </div>
-
-        <!-- How It Works Section -->
-        <h2 class="section-title">How Consignment Works</h2>
-        <div class="process-grid">
-            <div class="step-card">
-                <div class="step-number">01</div>
-                <h4 style="color:#fff; margin-bottom:8px;">Send Specs</h4>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Submit your BOM, wiring diagrams, or assembly requirements for a quick quote.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">02</div>
-                <h4 style="color:#fff; margin-bottom:8px;">Ship Components</h4>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Drop-ship your raw parts, PCB boards, and connectors directly to our bench.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">03</div>
-                <h4 style="color:#fff; margin-bottom:8px;">Rapid Execution</h4>
-                <p style="color:var(--text-muted); font-size:0.9rem;">We perform precision assembly, testing, and potting, shipping finished batches back to you.</p>
-            </div>
-        </div>
-
-        <!-- Capabilities & Specs -->
-        <h2 class="section-title">Benchtop Capabilities</h2>
-        <section class="grid">
-            <div class="card">
-                <h3>PCB & Wire Assembly</h3>
-                <ul>
-                    <li>Precision Through-Hole & Solder Work</li>
-                    <li>Custom Harness & Wire Pigtail Termination</li>
-                    <li>Deutsch, Amphenol & Molex Crimp Connections</li>
-                    <li>Continuity & Quality Inspection Testing</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Resin Potting & Sealing</h3>
-                <ul>
-                    <li>Two-Part Epoxy & Polyurethane Potting</li>
-                    <li>PCB & Sensor Block Encapsulation</li>
-                    <li>Complete Moisture & Water Intrusion Protection</li>
-                    <li>High-Vibration Environment Resistance</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Consignment Advantages</h3>
-                <ul>
-                    <li>Zero Inventory Markup on Parts</li>
-                    <li>Low MOQ (5 to 50+ Unit Batches)</li>
-                    <li>No Offshore Minimum Lead Times</li>
-                    <li>Flexible Overflow Production Capacity</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Target Industries -->
-        <h2 class="section-title">Industries Served</h2>
-        <section class="grid">
-            <div class="card">
-                <h3>4x4 & Automotive</h3>
-                <p>Custom switch panels, potted relay blocks, lighting harnesses, and ruggedized vehicle electronics.</p>
-            </div>
-            <div class="card">
-                <h3>Industrial OEMs</h3>
-                <p>Sensor potting, control box wiring, prototype sub-assemblies, and overflow bench capacity.</p>
-            </div>
-            <div class="card">
-                <h3>Marine Systems</h3>
-                <p>Fully sealed, water-tight harnesses and epoxy-potted circuitry built to withstand harsh marine environments.</p>
-            </div>
-        </section>
-
-        <!-- Contact Form Section -->
-        <section class="contact-section">
-            <h2>Request a Consignment Quote</h2>
-            <p>Submit details about your batch size, component specs, or assembly requirements. Direct responses within 24 hours.</p>
-
-            <form action="https://formspree.io/f/mqpkwywj" method="POST">
-                <div>
-                    <label for="name">Name / Company</label>
-                    <input type="text" id="name" name="name" required placeholder="e.g. Keith / Southern Off Road">
-                </div>
-                <div>
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="_replyto" placeholder="your-email@domain.com" required>
-                </div>
-                <div>
-                    <label for="details">Project Specs / Quantity / Requirements</label>
-                    <textarea id="details" name="message" rows="5" required placeholder="Describe your PCB assembly, wire harness, sensor encapsulation, or consignment requirements..."></textarea>
-                </div>
-                <button type="submit">Submit Quote Inquiry</button>
-            </form>
-        </section>
-
-        <footer>
-            <p>&copy; Blacksheep Benchworks | Veteran-Owned & Operated | Contact: blacksheepbenchworks@gmail.com</p>
-        </footer>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Birmingham, AL — Consignment Bench Labor</span>
+      <div class="topbar-contact">
+        <a href="tel:+15139670546">Office (513) 967-0546</a>
+        <a href="tel:+12052251053">Cell (205) 225-1053</a>
+        <a href="mailto:blacksheepbenchworks@gmail.com">blacksheepbenchworks@gmail.com</a>
+      </div>
     </div>
+  </div>
 
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge">Veteran-owned &amp; operated</div>
+          <h1 class="brand">Blacksheep Benchworks</h1>
+          <p class="tagline">Precision consignment assembly, wiring, and resin potting.</p>
+          <p class="subtext">Military-grade discipline applied to fast-turn wire preparation, sensor encapsulation, circuit board assemblies, and low-MOQ sub-assemblies for equipment builders and OEMs.</p>
+          <div class="hero-actions">
+            <a href="#quote-form" class="btn btn-primary">Get a quote</a>
+            <a href="tel:+15139670546" class="btn btn-outline">Call (513) 967-0546</a>
+          </div>
+        </div>
+        <div class="hero-diagram">
+          <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B9299" stroke-width="1.2">
+            <rect x="60" y="40" width="140" height="90" rx="4" stroke="#3A414B"/>
+            <rect x="75" y="55" width="110" height="60" rx="2" stroke="#E8590C" stroke-width="1.4"/>
+            <line x1="20" y1="70" x2="60" y2="70" />
+            <line x1="20" y1="100" x2="60" y2="100" />
+            <line x1="200" y1="70" x2="250" y2="70" />
+            <line x1="200" y1="100" x2="250" y2="100" />
+            <circle cx="20" cy="70" r="3" fill="#8B9299" stroke="none"/>
+            <circle cx="20" cy="100" r="3" fill="#8B9299" stroke="none"/>
+            <circle cx="250" cy="70" r="3" fill="#8B9299" stroke="none"/>
+            <circle cx="250" cy="100" r="3" fill="#8B9299" stroke="none"/>
+            <path d="M60 150 L200 150" stroke="#262B32" stroke-dasharray="3 3"/>
+            <text x="60" y="168" fill="#8B9299" font-family="monospace" font-size="9" stroke="none">POTTED HOUSING — SEC. A-A</text>
+            <line x1="60" y1="190" x2="200" y2="190" stroke="#3A414B"/>
+            <line x1="60" y1="184" x2="60" y2="196" stroke="#3A414B"/>
+            <line x1="200" y1="184" x2="200" y2="196" stroke="#3A414B"/>
+            <text x="112" y="206" fill="#8B9299" font-family="monospace" font-size="9" stroke="none">140mm</text>
+            <text x="30" y="225" fill="#E8590C" font-family="monospace" font-size="9" stroke="none">IP67 RATED · VIBRATION TESTED</text>
+          </svg>
+          <div class="hero-diagram-caption">
+            <span>REF. POTTED-SENSOR-HOUSING</span>
+            <span>BSB-STD-01</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="guarantee">
+        <div>
+          <h3>24-hour quote turnaround, guaranteed</h3>
+          <p>New client offer: 10% off bench labor on your first prototype or small-batch production run.</p>
+        </div>
+        <a href="#quote-form" class="btn btn-outline">Request quote</a>
+      </div>
+    </section>
+
+    <section id="estimator">
+      <div class="section-index">Estimate</div>
+      <h2 class="section-title">Labor cost estimator</h2>
+      <p class="section-sub">A rough range for bench labor based on unit count and assembly type. Excludes shipping and specialized resin material costs — submit your BOM for a formal quote.</p>
+      <div class="calc">
+        <div class="calc-fields">
+          <div class="field">
+            <label for="units">Unit quantity (MOQ 5+)</label>
+            <input type="number" id="units" value="10" min="5" max="500" oninput="calculateEstimate()">
+          </div>
+          <div class="field">
+            <label for="complexity">Assembly type</label>
+            <select id="complexity" onchange="calculateEstimate()">
+              <option value="15">Wire prep &amp; crimping (~$15/unit)</option>
+              <option value="28">PCB assembly &amp; solder (~$28/unit)</option>
+              <option value="42">Full potting &amp; encapsulation (~$42/unit)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-readout">
+          <div class="label">Estimated bench labor</div>
+          <div class="value" id="estimate-output">$135 – $173</div>
+          <div class="calc-note">Formal quotes are based on your exact BOM and finished spec.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">Process</div>
+      <h2 class="section-title">How consignment works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h4>Send specs</h4>
+          <p>Submit your BOM, wiring diagrams, or assembly requirements for a quick quote.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h4>Ship components</h4>
+          <p>Drop-ship raw components, PCB boards, and connectors directly to our bench.</p>
+          <div class="ship-to">SHIP TO — 2740 Industrial Drive, Suite 400, Birmingham, AL 35209</div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h4>Rapid execution</h4>
+          <p>We perform precision assembly, testing, and potting, shipping finished batches back to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">Preparation</div>
+      <h2 class="section-title">Component kitting guide</h2>
+      <div class="grid">
+        <div class="panel" style="grid-column: 1 / -1;">
+          <h3>Preparing your parts drop-shipment</h3>
+          <p style="margin-bottom:14px;">To keep bench processing fast and avoid assembly delays:</p>
+          <ul>
+            <li>Label all component bags with the corresponding BOM item numbers.</li>
+            <li>Include 5% extra crimp terminals and wire length for setup calibration.</li>
+            <li>Include pinout diagrams, torque specs, or potting depth limits in your package.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">Case study</div>
+      <h2 class="section-title">Client case example</h2>
+      <div class="case">
+        <h3>Custom off-road sensor encapsulation batch</h3>
+        <p><strong>Challenge:</strong> An aftermarket off-road vehicle builder needed 25 weatherproofed switch pigtail assemblies sealed against mud, high vibration, and pressure washing.</p>
+        <p><strong>Execution:</strong> Wire prep, Deutsch connector crimping, and polyurethane resin encapsulation delivered within 72 hours, with zero field failures.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">Capabilities</div>
+      <h2 class="section-title">Benchtop capabilities</h2>
+      <div class="grid">
+        <div class="panel">
+          <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20 L10 14 M8 8 L16 16 M14 4 L20 10 L16 14 L10 8 Z"/></svg>
+          <h3>PCB &amp; wire assembly</h3>
+          <ul>
+            <li>Precision through-hole &amp; solder work</li>
+            <li>Custom harness &amp; wire pigtail termination</li>
+            <li>Deutsch, Amphenol &amp; Molex crimp connections</li>
+            <li>Continuity &amp; quality inspection testing</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 C12 3 6 11 6 15 a6 6 0 0 0 12 0 C18 11 12 3 12 3 Z"/></svg>
+          <h3>Resin potting &amp; sealing</h3>
+          <ul>
+            <li>Two-part epoxy &amp; polyurethane potting</li>
+            <li>PCB &amp; sensor block encapsulation</li>
+            <li>Moisture &amp; water intrusion protection</li>
+            <li>High-vibration environment resistance</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M3 8 L12 3 L21 8"/></svg>
+          <h3>Consignment advantages</h3>
+          <ul>
+            <li>Zero inventory markup on parts</li>
+            <li>Low MOQ — 5 to 50+ unit batches</li>
+            <li>No offshore minimum lead times</li>
+            <li>Flexible overflow production capacity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">Who we serve</div>
+      <h2 class="section-title">Industries served</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3>4x4 &amp; automotive</h3>
+          <p>High-reliability switch panels, potted relay blocks, and ruggedized vehicle electronics engineered for constant off-road vibration, heat, and terrain demands.</p>
+        </div>
+        <div class="panel">
+          <h3>Industrial OEMs</h3>
+          <p>Overflow bench capacity, control box wiring, and precision sensor potting for commercial equipment manufacturers — rapid-turn small batches, strict build specs.</p>
+        </div>
+        <div class="panel">
+          <h3>Marine systems</h3>
+          <p>Fully sealed, watertight wiring harnesses and epoxy-encapsulated circuitry for saltwater environments, from instrument clusters to underwater sensor blocks.</p>
+        </div>
+        <div class="panel">
+          <h3>Creators &amp; prototypers</h3>
+          <p>Professional bench execution without factory minimums — prototype wiring, sensor integration, or short-run product assembly at manufacturing quality.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-index">FAQ</div>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">What is your minimum order quantity (MOQ)? <span class="sign">+</span></div>
+          <div class="faq-answer"><p>We specialize in prototype and small-batch production, typically 5 to 50+ units, and can accommodate custom low-volume runs based on your requirements.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">How does the consignment model work? <span class="sign">+</span></div>
+          <div class="faq-answer"><p>You buy and drop-ship your circuit boards, connectors, and raw components directly to our workshop. We provide bench labor, soldering, assembly, and encapsulation, charging strictly for labor without marking up your parts.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">What is your standard turnaround time? <span class="sign">+</span></div>
+          <div class="faq-answer"><p>Most standard small-batch orders (10-30 units) ship within 3 to 5 business days after component drop-shipments arrive. Expedited execution is available on request.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Do you sign non-disclosure agreements (NDAs)? <span class="sign">+</span></div>
+          <div class="faq-answer"><p>Yes. We regularly work with proprietary OEM designs and custom electronic sub-assemblies, and are happy to execute standard NDAs before reviewing your CAD or manufacturing specs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quote-form">
+      <div class="section-index">Get started</div>
+      <h2 class="section-title">Request a consignment quote</h2>
+      <p class="section-sub">Submit your batch size, component specs, or assembly requirements. Direct responses within 24 hours.</p>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p>Prefer to talk it through first? Call or email directly.</p>
+          <dl>
+            <dt>Office</dt><dd><a href="tel:+15139670546">(513) 967-0546</a></dd>
+            <dt>Cell</dt><dd><a href="tel:+12052251053">(205) 225-1053</a></dd>
+            <dt>Email</dt><dd><a href="mailto:blacksheepbenchworks@gmail.com">blacksheepbenchworks@gmail.com</a></dd>
+            <dt>Ship to</dt><dd>2740 Industrial Drive, Suite 400<br>Birmingham, AL 35209</dd>
+          </dl>
+        </div>
+        <form action="https://formspree.io/f/mqpkwywj" method="POST">
+          <div class="field-full">
+            <label for="name">Name / company</label>
+            <input type="text" id="name" name="name" required placeholder="e.g. Keith / Southern Off Road">
+          </div>
+          <div class="field-full">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="_replyto" placeholder="your-email@domain.com" required>
+          </div>
+          <div class="field-full">
+            <label for="details">Project specs / quantity / requirements</label>
+            <textarea id="details" name="message" rows="5" required placeholder="Describe your PCB assembly, wire harness, sensor encapsulation, or consignment requirements..."></textarea>
+          </div>
+          <button type="submit">Submit quote inquiry</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    &copy; Blacksheep Benchworks — Veteran-owned &amp; operated — Birmingham, AL
+  </footer>
+
+<script>
+  function calculateEstimate() {
+    const units = parseInt(document.getElementById('units').value) || 0;
+    const rate = parseFloat(document.getElementById('complexity').value);
+    const output = document.getElementById('estimate-output');
+    if (units < 1) {
+      output.textContent = 'Enter a valid unit count';
+      return;
+    }
+    const low = Math.round(units * rate * 0.9);
+    const high = Math.round(units * rate * 1.15);
+    output.textContent = `$${low} – $${high}`;
+  }
+  calculateEstimate();
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.sign').textContent = '+';
+    });
+    if (!wasActive) {
+      item.classList.add('active');
+      item.querySelector('.sign').textContent = '\u2212';
+    }
+  }
+</script>
 </body>
 </html>
