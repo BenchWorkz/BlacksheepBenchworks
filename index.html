@@ -12,8 +12,8 @@
 <style>
   :root {
     --bg: #0A0C10;
-    --panel: #12151A;
-    --panel-raised: #171B21;
+    --panel: rgba(18, 21, 26, 0.90);
+    --panel-raised: rgba(23, 27, 33, 0.95);
     --line: #262B32;
     --line-bright: #3A414B;
     --accent: #E8590C;
@@ -29,10 +29,13 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background:
-      linear-gradient(var(--bg), var(--bg)),
-      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px),
-      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px);
+    background-color: var(--bg);
+    background-image: 
+      linear-gradient(rgba(10, 12, 16, 0.88), rgba(10, 12, 16, 0.94)),
+      url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
@@ -63,7 +66,8 @@
   /* ---------- Top bar ---------- */
   .topbar {
     border-bottom: 1px solid var(--line);
-    background: rgba(10,12,16,0.9);
+    background: rgba(10,12,16,0.92);
+    backdrop-filter: blur(8px);
   }
   .topbar-inner {
     display: flex;
@@ -101,6 +105,7 @@
     font-family: var(--mono);
     font-size: 0.78rem;
     margin-bottom: 22px;
+    background: rgba(10, 12, 16, 0.6);
   }
   .badge::before {
     content: '';
@@ -147,7 +152,7 @@
   .btn-outline {
     border-color: var(--line-bright);
     color: var(--text);
-    background: transparent;
+    background: rgba(10, 12, 16, 0.6);
   }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -155,6 +160,7 @@
     border: 1px solid var(--line);
     background: var(--panel);
     padding: 18px;
+    backdrop-filter: blur(6px);
   }
   .hero-diagram svg { width: 100%; height: auto; display: block; }
   .hero-diagram-caption {
@@ -196,13 +202,14 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
+    backdrop-filter: blur(6px);
   }
   .guarantee h3 { font-size: 1.05rem; }
   .guarantee p { margin-top: 4px; font-size: 0.92rem; }
 
-  /* ---------- Panels / cards (technical, not glassmorphism) ---------- */
+  /* ---------- Panels / cards ---------- */
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  .grid .panel { background: var(--bg); padding: 26px; }
+  .grid .panel { background: var(--panel); padding: 26px; backdrop-filter: blur(6px); }
   .panel h3 { font-size: 1.05rem; margin-bottom: 12px; color: var(--accent); }
   .panel p, .panel ul { font-size: 0.93rem; }
   .panel ul { list-style: none; }
@@ -219,6 +226,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 32px;
     align-items: center;
+    backdrop-filter: blur(6px);
   }
   .calc-fields { display: flex; flex-direction: column; gap: 18px; }
   .field label {
@@ -231,7 +239,7 @@
   .field input, .field select {
     width: 100%;
     padding: 11px 12px;
-    background: var(--bg);
+    background: rgba(10, 12, 16, 0.85);
     border: 1px solid var(--line-bright);
     color: var(--text);
     font-size: 0.95rem;
@@ -253,7 +261,7 @@
 
   /* ---------- Process steps ---------- */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  .step { background: var(--bg); padding: 26px; }
+  .step { background: var(--panel); padding: 26px; backdrop-filter: blur(6px); }
   .step .num { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; }
   .step h4 { margin: 10px 0 8px 0; font-size: 1rem; }
   .step p { font-size: 0.9rem; }
@@ -267,7 +275,7 @@
   }
 
   /* ---------- Case study ---------- */
-  .case { border-left: 3px solid var(--accent); background: var(--panel); padding: 26px 28px; }
+  .case { border-left: 3px solid var(--accent); background: var(--panel); padding: 26px 28px; backdrop-filter: blur(6px); }
   .case h3 { margin-bottom: 12px; }
   .case p { font-size: 0.95rem; margin-bottom: 8px; }
   .case p strong { color: var(--text); }
@@ -291,7 +299,7 @@
     overflow: hidden;
     transition: max-height 0.25s ease;
     font-size: 0.92rem;
-    background: var(--bg);
+    background: rgba(10, 12, 16, 0.95);
   }
   .faq-answer p { padding: 0 20px; }
   .faq-item.active .faq-answer { max-height: 240px; }
@@ -308,7 +316,7 @@
   input, textarea {
     width: 100%;
     padding: 13px;
-    background: var(--panel);
+    background: rgba(10, 12, 16, 0.85);
     border: 1px solid var(--line-bright);
     color: var(--text);
     font-size: 0.95rem;
@@ -525,19 +533,19 @@
       <div class="grid">
         <div class="panel">
           <h3>4x4 &amp; automotive</h3>
-          <p>High-reliability switch panels, potted relay blocks, and ruggedized vehicle electronics engineered for constant off-road vibration, heat, and terrain demands.</p>
+          <p>We build high-reliability custom switch panels, potted relay blocks, and ruggedized vehicle electronics engineered for extreme conditions. Every wiring harness and module is assembled to resist constant off-road vibration, heat exposure, and severe terrain demands.</p>
         </div>
         <div class="panel">
           <h3>Industrial OEMs</h3>
-          <p>Overflow bench capacity, control box wiring, and precision sensor potting for commercial equipment manufacturers — rapid-turn small batches, strict build specs.</p>
+          <p>Our workshop provides dedicated overflow bench capacity, control box wiring, and precision sensor potting for commercial equipment manufacturers. We help industrial OEMs eliminate assembly bottlenecks with rapid-turn small-batch execution and strict adherence to build specifications.</p>
         </div>
         <div class="panel">
           <h3>Marine systems</h3>
-          <p>Fully sealed, watertight wiring harnesses and epoxy-encapsulated circuitry for saltwater environments, from instrument clusters to underwater sensor blocks.</p>
+          <p>We fabricate fully sealed, water-tight wiring harnesses and epoxy-encapsulated circuitry designed specifically for harsh saltwater environments. From marine instrument clusters to underwater sensor blocks, our potting process guarantees long-term protection against corrosion and water intrusion.</p>
         </div>
         <div class="panel">
           <h3>Creators &amp; prototypers</h3>
-          <p>Professional bench execution without factory minimums — prototype wiring, sensor integration, or short-run product assembly at manufacturing quality.</p>
+          <p>We partner with hardware inventors, makers, and boutique product developers who need professional bench execution without factory minimums. Whether you need initial prototype wiring, specialized PCB sensor integration, or short-run product assembly, we bring high-end manufacturing quality to your custom builds.</p>
         </div>
       </div>
     </section>
